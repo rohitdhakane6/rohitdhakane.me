@@ -18,7 +18,7 @@ export const USER = {
   email: "rohitdhakane6@gmail.com",
   website: "https://rohitdhakane.me",
   otherWebsites: [],
-  jobTitle: "Design Engineer",
+  jobTitle: "Full Stack Engineer",
   jobs: [
     {
       title: "Building",
@@ -27,7 +27,7 @@ export const USER = {
     },
   ],
   about: `
-Hello, World! I am Rohit Dhakane — a Design Engineer passionate about building high-performance, user-focused software solutions that merge clean design with robust engineering.
+Hello, World! I am Rohit Dhakane — a Full Stack Engineer passionate about building high-performance, user-focused software solutions that merge clean design with robust engineering.
 
 With strong expertise in Next.js, React, TypeScript, Node.js, and Prisma, I specialize in developing scalable, modern web applications. I enjoy tackling complex backend challenges, creating intuitive frontends, and ensuring every detail aligns for a seamless user experience.
 
