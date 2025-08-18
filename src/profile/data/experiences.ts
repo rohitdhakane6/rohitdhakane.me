@@ -23,6 +23,31 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
+    id: "igurus",
+    companyName: "iGurus",
+    companyLogo: "https://www.igurus.in/static/images/favicon.png",
+    isCurrentEmployer: false,
+    positions: [
+      {
+        id: "d1f2b3c4-5678-90ab-cdef-1234567890ab",
+        title: "Frontend Intern",
+        employmentPeriod: {
+          start: "05.2025",
+          end: "08.2025",
+        },
+        employmentType: "Internship",
+        description: `- Developed and maintained the [**iGurus**](https://www.igurus.in/) website using **Next.js**, **Tailwind CSS**, and **TypeScript**.  
+        - Implemented responsive design and optimized performance for better user experience.  
+        - Collaborated with the design team to create visually appealing and user-friendly interfaces.  
+        - Assisted in debugging and troubleshooting issues to ensure smooth functionality.  
+        `,
+        icon: "code",
+        skills: ["Next.js", "Tailwind CSS", "TypeScript", "Shadcn Ui"],
+      },
+    ],
+  },
+
+  {
     id: "education",
     companyName: "Education",
     positions: [
@@ -35,7 +60,15 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Bachelor's Degree",
         employmentUrl: "https://www.dypcoei.edu.in/",
-        description: `- Pursuing a Bachelor's degree in Computer Engineering.`,
+        description: `Completed Bachelor's in Computer Engineering (2021–2025) at Dr. D. Y. Patil College of Engineering and Innovation, Pune.  
+Focused on software development, data structures, algorithms, and modern web technologies.  
+
+- Built projects using JavaScript, TypeScript, and React  
+- Strong foundation in Data Structures & Algorithms  
+- Experience with databases and distributed systems  
+- Applied principles of software engineering & system design  
+- Active participation in teamwork, presentations, and research  
+- Self-driven learner with hands-on coding experience  `,
         icon: "education",
         skills: [
           "JavaScript",
