@@ -37,8 +37,8 @@ One of my current focuses, [ExpenseAI](https://expenseai.tech), is designed to m
 
 I believe in the power of open-source collaboration, continuous learning, and designing solutions that matter. Let’s connect and build something extraordinary!
   `,
-  avatar: "https://assets.rohitdhakane.me/images/me.png",
-  ogImage: "https://assets.rohitdhakane.me/images/og-image.png",
+  avatar: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/images/me.png",
+  ogImage: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/images/og-image.png",
   keywords:
     "rohit, rohitdhakane, rohit dhakane, rohit-dhakane, expenseai, detoxyfy, crypto exchange, zapier clone, phishing detection, web developer pune, full stack engineer, solana developer, open source contributor",
   dateCreated: "2025-08-08", // YYYY-MM-DD

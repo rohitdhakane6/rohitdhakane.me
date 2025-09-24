@@ -9,7 +9,7 @@ export const PROJECTS: Project[] = [
     },
     link: "https://github.com/rohitdhakane6/metaverse-2d",
     thumbnailSrc:
-      "https://assets.rohitdhakane.me/images/projects/metaverse.jpg",
+      "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/images/projects/metaverse.jpg",
     videoSrc: "https://www.youtube.com/embed/mfTjfQPs1gM?si=AxTJCnE3owhskzCS",
     skills: [
       "React.js",
@@ -41,7 +41,7 @@ It combines gaming elements with social features like chat and video calls.
     },
     link: "https://github.com/rohitdhakane6/Phishing-Detection",
     thumbnailSrc:
-      "https://assets.rohitdhakane.me/images/projects/Phishing-Detection.png",
+      "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/images/projects/Phishing-Detection.png",
     skills: [
       "Next.js",
       "TypeScript",
@@ -70,7 +70,7 @@ It combines gaming elements with social features like chat and video calls.
       end: "05.2025",
     },
     link: "https://web-wallet-jade-six.vercel.app",
-    thumbnailSrc: "https://assets.rohitdhakane.me/wallet.png",
+    thumbnailSrc: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/wallet.png",
     skills: [
       "React.js",
       "TypeScript",

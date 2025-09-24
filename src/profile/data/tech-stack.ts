@@ -1,7 +1,7 @@
 import type { TechStack } from "../types/tech-stack";
 
 export const BASE_URL =
-  "https://assets.rohitdhakane.me/images/tech-stack-icons";
+  "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/images/tech-stack-icons";
 
 export const TECH_STACK: TechStack[] = [
   {
