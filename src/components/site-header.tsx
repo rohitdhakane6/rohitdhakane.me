@@ -1,4 +1,4 @@
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 // import Link from "next/link";
 
 import { DesktopNav } from "@/components/desktop-nav";
@@ -7,19 +7,19 @@ import { SiteHeaderWrapper } from "@/components/site-header-wrapper";
 // import { NavItemGitHub } from "@/components/nav-item-github";
 import { ToggleTheme } from "@/components/toggle-theme";
 import { MAIN_NAV } from "@/config/site";
-// import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/data/blog";
 import { cn } from "@/lib/utils";
 
 // const BrandContextMenu = dynamic(() =>
 //   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
 // );
 
-// const CommandMenu = dynamic(() =>
-//   import("@/components/command-menu").then((mod) => mod.CommandMenu)
-// );
+const CommandMenu = dynamic(() =>
+  import("@/components/command-menu").then((mod) => mod.CommandMenu),
+);
 
 export function SiteHeader() {
-  // const posts = getAllPosts();
+  const posts = getAllPosts();
 
   return (
     <SiteHeaderWrapper
@@ -45,7 +45,7 @@ export function SiteHeader() {
         <DesktopNav items={MAIN_NAV} />
 
         <div className="flex items-center gap-2">
-          {/* <CommandMenu posts={posts} /> */}
+          <CommandMenu posts={posts} />
           {/* <NavItemGitHub /> */}
           <ToggleTheme />
           <MobileNav className="sm:hidden" items={MAIN_NAV} />

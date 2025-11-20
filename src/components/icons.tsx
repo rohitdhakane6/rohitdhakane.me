@@ -1,4 +1,10 @@
-import { FileIcon, TerminalSquareIcon } from "lucide-react";
+import {
+  BriefcaseBusinessIcon,
+  FileIcon,
+  GalleryHorizontalEndIcon,
+  MoonStarIcon,
+  TerminalSquareIcon,
+} from "lucide-react";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -277,6 +283,17 @@ export const Icons = {
       <path d="M12 19.6l8.85 -8.85" />
     </svg>
   ),
+  search: (props: IconProps) => (
+    <svg viewBox="0 0 16 16" fill="none" {...props}>
+      <title>Search</title>
+      <path
+        d="M10.278 11.514a5.824 5.824 0 1 1 1.235-1.235l3.209 3.208A.875.875 0 0 1 14.111 15a.875.875 0 0 1-.624-.278l-3.209-3.208Zm.623-4.69a4.077 4.077 0 1 1-8.154 0 4.077 4.077 0 0 1 8.154 0Z"
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+      />
+    </svg>
+  ),
 };
 
 export function getIconForLanguageExtension(language: string) {
@@ -317,4 +334,26 @@ export function getIcon(name: string | undefined) {
   if (!name || !(name in Icons)) return null;
   const Icon = Icons[name as keyof typeof Icons];
   return <Icon />;
+}
+
+type ComponentIconProps = React.ComponentProps<"svg"> & {
+  variant?: string;
+};
+export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
+  switch (variant) {
+    case "work-experience":
+      return <BriefcaseBusinessIcon {...props} />;
+
+    case "theme-switcher":
+      return <MoonStarIcon {...props} />;
+
+    case "testimonials-marquee":
+      return <GalleryHorizontalEndIcon {...props} />;
+
+    case "github-stars":
+      return <Icons.github {...props} />;
+
+    default:
+      return <Icons.react {...props} />;
+  }
 }
