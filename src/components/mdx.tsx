@@ -6,7 +6,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
-
+import { CodeBlockCommand } from "@/components/code-block-command";
 import {
   Table,
   TableBody,
@@ -19,10 +19,8 @@ import { Code, Heading } from "@/components/ui/typography";
 import { rehypeNpmCommand } from "@/lib/rehype-npm-command";
 import { cn } from "@/lib/utils";
 import type { NpmCommands } from "@/types/unist";
-
 import { CopyButton } from "./copy-button";
 import { getIconForLanguageExtension } from "./icons";
-import { CodeBlockCommand } from "@/components/code-block-command";
 
 const components: MDXRemoteProps["components"] = {
   h1: (props: React.ComponentProps<"h1">) => <Heading as="h1" {...props} />,
@@ -154,9 +152,9 @@ const options: MDXRemoteProps["options"] = {
               return;
             }
 
-            preElement.properties["__withMeta__"] =
+            preElement.properties.__withMeta__ =
               node.children.at(0).tagName === "figcaption";
-            preElement.properties["__rawString__"] = node.__rawString__;
+            preElement.properties.__rawString__ = node.__rawString__;
           }
         });
       },

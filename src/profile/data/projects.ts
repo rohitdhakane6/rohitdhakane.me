@@ -70,7 +70,8 @@ It combines gaming elements with social features like chat and video calls.
       end: "05.2025",
     },
     link: "https://web-wallet-jade-six.vercel.app",
-    thumbnailSrc: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/wallet.png",
+    thumbnailSrc:
+      "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/wallet.png",
     skills: [
       "React.js",
       "TypeScript",

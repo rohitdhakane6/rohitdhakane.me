@@ -10,7 +10,7 @@ export function Certifications() {
       <PanelHeader>
         <PanelTitle>
           Certifications
-          <sup className="ml-1 font-mono text-sm font-medium text-muted-foreground select-none">
+          <sup className="ml-1 select-none font-medium font-mono text-muted-foreground text-sm">
             ({CERTIFICATIONS.length})
           </sup>
         </PanelTitle>

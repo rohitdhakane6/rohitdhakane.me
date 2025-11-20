@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 import type { Experience } from "../../types/experiences";
 import { ExperiencePositionItem } from "./experience-position-item";
@@ -25,7 +24,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           )}
         </div>
 
-        <h3 className="text-lg leading-snug font-medium">
+        <h3 className="font-medium text-lg leading-snug">
           {experience.companyName}
         </h3>
 

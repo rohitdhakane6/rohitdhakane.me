@@ -1,16 +1,15 @@
 import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
-
-import type { SocialLink } from "@/profile/types/social-links";
 import { cn } from "@/lib/utils";
+import type { SocialLink } from "@/profile/types/social-links";
 
 export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
   return (
     <a
       className={cn(
-        "group/link flex cursor-pointer items-center gap-4 rounded-2xl p-4 pr-2 transition-colors select-none",
+        "group/link flex cursor-pointer select-none items-center gap-4 rounded-2xl p-4 pr-2 transition-colors",
         "max-sm:screen-line-before max-sm:screen-line-after",
-        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
+        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after",
       )}
       href={href}
       target="_blank"
@@ -45,7 +44,7 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
         </h3>
 
         {description && (
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground text-sm">{description}</p>
         )}
       </div>
 

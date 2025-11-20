@@ -20,16 +20,24 @@ function getWebSiteJsonLd(): WithContext<WebSite> {
 }
 
 // Thanks @shadcn-ui, @tailwindcss
-const darkModeScript = String.raw`
+const darkModeScript = `
   try {
-    if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+    if (
+      localStorage.theme === 'dark' ||
+      (
+        (!('theme' in localStorage) || localStorage.theme === 'system') &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      )
+    ) {
+      document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute('content', '${META_THEME_COLORS.dark}');
     }
   } catch (_) {}
 
   try {
     if (/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
-      document.documentElement.classList.add('os-macos')
+      document.documentElement.classList.add('os-macos');
     }
   } catch (_) {}
 `;
@@ -121,21 +129,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: darkModeScript }}
-        />
+        <Script type="text/javascript">{darkModeScript}</Script>
         {/*
           Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,
           since we found the regular `<script>` tag to not execute when rendering a not-found page.
          */}
         <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
-          }}
-        />
+        <Script type="application/ld+json">
+          {JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c")}
+        </Script>
       </head>
 
       <body>

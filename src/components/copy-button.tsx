@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckIcon, CopyIcon } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { copyText } from "@/utils/copy";
@@ -22,7 +22,7 @@ export function CopyButton({
     setTimeout(() => {
       setHasCopied(false);
     }, 2000);
-  }, [hasCopied]);
+  }, []);
 
   return (
     <Button

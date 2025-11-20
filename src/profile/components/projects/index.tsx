@@ -10,7 +10,7 @@ export function Projects() {
       <PanelHeader>
         <PanelTitle>
           Projects
-          <sup className="ml-1 font-mono text-sm text-muted-foreground select-none">
+          <sup className="ml-1 select-none font-mono text-muted-foreground text-sm">
             ({PROJECTS.length})
           </sup>
         </PanelTitle>

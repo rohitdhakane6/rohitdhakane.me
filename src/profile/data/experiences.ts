@@ -94,7 +94,7 @@ Focused on software development, data structures, algorithms, and modern web tec
         },
         employmentType: "Higher Secondary Certificate (12th Grade)",
         icon: "education",
-        description: ``,
+        description: "",
         skills: [],
       },
       {
@@ -106,7 +106,7 @@ Focused on software development, data structures, algorithms, and modern web tec
         },
         employmentType: "Secondary School Certificate (10th Grade)",
         icon: "education",
-        description: ``,
+        description: "",
         skills: [],
       },
     ],

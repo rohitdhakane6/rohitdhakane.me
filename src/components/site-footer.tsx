@@ -3,12 +3,12 @@ import { SOURCE_CODE_GITHUB_URL } from "@/config/site";
 export function SiteFooter() {
   return (
     <footer className="max-w-screen overflow-x-hidden px-2">
-      <div className="screen-line-before mx-auto border-x border-edge pt-4 md:max-w-3xl">
-        <p className="mb-1 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
+      <div className="screen-line-before mx-auto border-edge border-x pt-4 md:max-w-3xl">
+        <p className="mb-1 text-balance px-4 text-center font-mono text-muted-foreground text-sm">
           Inspired by tailwindcss.com & ui.shadcn.com
         </p>
 
-        <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
+        <p className="mb-4 text-balance px-4 text-center font-mono text-muted-foreground text-sm">
           Built by{" "}
           <a
             className="link"

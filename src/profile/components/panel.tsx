@@ -1,5 +1,5 @@
 import { Slot as SlotPrimitive } from "radix-ui";
-import React from "react";
+import type React from "react";
 
 const Slot = SlotPrimitive.Slot;
 
@@ -10,8 +10,8 @@ function Panel({ className, ...props }: React.ComponentProps<"section">) {
     <section
       data-slot="panel"
       className={cn(
-        "screen-line-before screen-line-after border-x border-edge",
-        className
+        "screen-line-before screen-line-after border-edge border-x",
+        className,
       )}
       {...props}
     />
@@ -38,7 +38,7 @@ function PanelTitle({
   return (
     <Comp
       data-slot="panel-title"
-      className={cn("text-3xl font-semibold", className)}
+      className={cn("font-semibold text-3xl", className)}
       {...props}
     />
   );

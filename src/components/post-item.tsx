@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
@@ -19,7 +18,7 @@ export function PostItem({
       className={cn(
         "group/post flex flex-col gap-2 p-2",
         "max-sm:screen-line-before max-sm:screen-line-after",
-        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
+        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after",
       )}
     >
       {post.metadata.image && (
@@ -37,7 +36,7 @@ export function PostItem({
           <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
 
           {post.metadata.new && (
-            <span className="absolute top-1.5 right-1.5 rounded-md bg-info px-1.5 font-mono text-sm font-medium text-white text-shadow-xs">
+            <span className="absolute top-1.5 right-1.5 rounded-md bg-info px-1.5 font-medium font-mono text-shadow-xs text-sm text-white">
               New
             </span>
           )}
@@ -45,13 +44,13 @@ export function PostItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <h3 className="text-lg leading-snug font-medium text-balance underline-offset-4 group-hover/post:underline">
+        <h3 className="text-balance font-medium text-lg leading-snug underline-offset-4 group-hover/post:underline">
           {post.metadata.title}
         </h3>
 
         <dl>
           <dt className="sr-only">Published on</dt>
-          <dd className="text-sm text-muted-foreground">
+          <dd className="text-muted-foreground text-sm">
             <time dateTime={dayjs(post.metadata.createdAt).toISOString()}>
               {dayjs(post.metadata.createdAt).format("DD.MM.YYYY")}
             </time>

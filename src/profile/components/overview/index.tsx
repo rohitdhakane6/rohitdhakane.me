@@ -1,29 +1,29 @@
-import {
-  GlobeIcon,
-  MapPinIcon,
-  MarsIcon,
-  VenusIcon,
-  MailIcon,
-  PhoneIcon,
-} from "lucide-react";
-
+"use client";
+import { GlobeIcon, MapPinIcon, MarsIcon, VenusIcon } from "lucide-react";
 import { USER } from "@/data/user";
 import { urlToName } from "@/utils/url";
-
 import { Panel, PanelContent } from "../panel";
-import { IntroItem } from "./intro-item";
+import { CurrentLocalTimeItem } from "./current-local-time-item";
+import { EmailItem } from "./email-item";
+import {
+  IntroItem,
+  IntroItemContent,
+  IntroItemIcon,
+  IntroItemLink,
+} from "./intro-item";
 import { JobItem } from "./job-item";
+import { PhoneItem } from "./phone-item";
 
 export function Overview() {
   return (
     <Panel>
       <h2 className="sr-only">Overview</h2>
 
-      <PanelContent className="space-y-2">
-        {USER.jobs.map((job, index) => {
+      <PanelContent className="space-y-2.5">
+        {USER.jobs.map((job) => {
           return (
             <JobItem
-              key={index}
+              key={job.company}
               title={job.title}
               company={job.company}
               website={job.website}
@@ -31,31 +31,48 @@ export function Overview() {
           );
         })}
 
-        <IntroItem icon={MapPinIcon} content={USER.address} />
+        <div className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">
+          <IntroItem>
+            <IntroItemIcon>
+              <MapPinIcon />
+            </IntroItemIcon>
+            <IntroItemContent aria-label={`Location: ${USER.address}`}>
+              {USER.address}
+            </IntroItemContent>
+          </IntroItem>
 
-        <IntroItem
-          icon={PhoneIcon}
-          content={USER.phoneNumber}
-          href={`tel:${USER.phoneNumber}`}
-        />
+          <CurrentLocalTimeItem timeZone={USER.timeZone} />
 
-        <IntroItem
-          icon={MailIcon}
-          content={USER.email}
-          href={`mailto:${USER.email}`}
-        />
+          <PhoneItem phoneNumber={USER.phoneNumber} />
 
-        <IntroItem
-          icon={GlobeIcon}
-          content={urlToName(USER.website)}
-          href={USER.website}
-        />
+          <EmailItem email={USER.email} />
 
-        <IntroItem
-          icon={USER.gender === "male" ? MarsIcon : VenusIcon}
-          content={USER.pronouns}
-        />
+          <IntroItem>
+            <IntroItemIcon>
+              <GlobeIcon />
+            </IntroItemIcon>
+            <IntroItemContent>
+              <IntroItemLink
+                href={USER.website}
+                aria-label={`Personal website: ${urlToName(USER.website)}`}
+              >
+                {urlToName(USER.website)}
+              </IntroItemLink>
+            </IntroItemContent>
+          </IntroItem>
+
+          <IntroItem>
+            <IntroItemIcon>
+              {USER.gender === "male" ? <MarsIcon /> : <VenusIcon />}
+            </IntroItemIcon>
+            <IntroItemContent aria-label={`Pronouns: ${USER.pronouns}`}>
+              {USER.pronouns}
+            </IntroItemContent>
+          </IntroItem>
+        </div>
       </PanelContent>
+
+      <div className="-inset-x-px pointer-events-none absolute inset-y-0 rounded-2xl border" />
     </Panel>
   );
 }

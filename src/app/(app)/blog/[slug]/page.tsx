@@ -4,8 +4,8 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import type { BlogPosting as PageSchema, WithContext } from "schema-dts";
-
 import { InlineTOC } from "@/components/inline-toc";
 import { MDX } from "@/components/mdx";
 import { PostKeyboardShortcuts } from "@/components/post-keyboard-shortcuts";
@@ -109,12 +109,9 @@ export default async function Page({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c"),
-        }}
-      />
+      <Script type="application/ld+json" id="json-ld">
+        {JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c")}
+      </Script>
 
       <PostKeyboardShortcuts basePath="/blog" previous={previous} next={next} />
 
@@ -157,8 +154,8 @@ export default async function Page({
         <div
           className={cn(
             "h-8",
-            "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
-            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56"
+            "before:-left-[100vw] before:-z-1 before:absolute before:h-full before:w-[200vw]",
+            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56",
           )}
         />
       </div>
@@ -172,7 +169,9 @@ export default async function Page({
 
         <InlineTOC items={toc} />
 
-        <div><MDX code={post.content} /> </div>
+        <div>
+          <MDX code={post.content} />{" "}
+        </div>
       </Prose>
 
       <div className="screen-line-before h-4 w-full" />

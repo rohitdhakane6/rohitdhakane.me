@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import type React from "react";
 
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/types/nav";
@@ -20,16 +20,16 @@ export function Nav({
           activeId === href || (href !== "/" && activeId?.startsWith(href));
 
         return (
-          <NavItem key={href} href={href} active={active}>
+          <NavLink key={href} href={href} active={active}>
             {title}
-          </NavItem>
+          </NavLink>
         );
       })}
     </nav>
   );
 }
 
-export function NavItem({
+export function NavLink({
   active,
   ...props
 }: React.ComponentProps<typeof Link> & {
@@ -38,8 +38,8 @@ export function NavItem({
   return (
     <Link
       className={cn(
-        "font-mono text-sm font-medium text-muted-foreground transition-all duration-300",
-        active && "text-foreground"
+        "font-medium font-mono text-muted-foreground text-sm transition-all duration-300",
+        active && "text-foreground",
       )}
       {...props}
     />

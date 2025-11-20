@@ -48,12 +48,12 @@ export function PostKeyboardShortcuts({
           }
         }
       },
-      { signal }
+      { signal },
     );
 
     return () => abortController.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // biome-ignore lint: suspicious/useEffectHasNoDependencyArray
+  }, [navigate, next, previous]);
 
   return null;
 }

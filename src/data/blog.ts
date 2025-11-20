@@ -1,6 +1,6 @@
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
 import matter from "gray-matter";
-import path from "path";
 
 import type { Post, PostMetadata } from "@/types/blog";
 
@@ -42,7 +42,7 @@ export function getAllPosts() {
   return getMDXData(path.join(process.cwd(), "src/content/blog")).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -
-      new Date(a.metadata.createdAt).getTime()
+      new Date(a.metadata.createdAt).getTime(),
   );
 }
 

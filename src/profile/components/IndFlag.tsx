@@ -8,6 +8,7 @@ export default function IndFlag({ className }: { className?: string }) {
       className={cn(className)}
       aria-label="Flag of India"
     >
+      <title>Flag of India</title>
       {/* <!-- three horizontal bands: saffron, white, green --> */}
       <rect x="0" y="0" width="30" height="6.6666667" fill="#F15B25" />
       <rect x="0" y="6.6666667" width="30" height="6.6666667" fill="#FFF" />

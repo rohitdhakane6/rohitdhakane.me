@@ -14,10 +14,11 @@ export function PronounceMyName({
 }) {
   return (
     <button
+      type="button"
       className={cn(
         "relative text-muted-foreground transition-all hover:text-foreground active:scale-[0.9]",
-        "after:absolute after:-inset-1",
-        className
+        "after:-inset-1 after:absolute",
+        className,
       )}
       onClick={() => soundManager.playAudio(namePronunciationUrl)}
     >

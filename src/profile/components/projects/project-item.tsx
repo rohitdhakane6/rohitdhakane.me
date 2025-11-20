@@ -5,7 +5,6 @@ import {
   LinkIcon,
 } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
 import { Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
@@ -14,12 +13,11 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import HeroVideoDialog from "@/components/ui/hero-video-dialog";
 import { Tag } from "@/components/ui/tag";
 import { SimpleTooltip } from "@/components/ui/tooltip";
 import { Prose } from "@/components/ui/typography";
-
 import type { Project } from "../../types/projects";
-import HeroVideoDialog from "@/components/ui/hero-video-dialog";
 
 export function ProjectItem({
   className,
@@ -48,17 +46,17 @@ export function ProjectItem({
             />
           ) : (
             <div
-              className="text-muted-foreground mx-4 flex size-6 shrink-0 items-center justify-center"
+              className="mx-4 flex size-6 shrink-0 items-center justify-center text-muted-foreground"
               aria-hidden="true"
             >
               <Icons.project className="size-5" />
             </div>
           )}
 
-          <div className="border-edge flex-1 border-l border-dashed">
-            <CollapsibleTrigger className="group/project flex w-full items-center gap-4 p-4 pr-2 text-left select-none">
+          <div className="flex-1 border-edge border-l border-dashed">
+            <CollapsibleTrigger className="group/project flex w-full select-none items-center gap-4 p-4 pr-2 text-left">
               <div className="flex-1">
-                <h3 className="mb-1 leading-snug font-medium text-balance">
+                <h3 className="mb-1 text-balance font-medium leading-snug">
                   {project.title}
                 </h3>
 
@@ -84,7 +82,7 @@ export function ProjectItem({
 
               <SimpleTooltip content="Open Project Link">
                 <a
-                  className="text-muted-foreground hover:text-foreground relative flex size-6 shrink-0 items-center justify-center after:absolute after:-inset-2"
+                  className="after:-inset-2 relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute hover:text-foreground"
                   href={project.link}
                   target="_blank"
                   rel="noopener"
@@ -95,7 +93,7 @@ export function ProjectItem({
               </SimpleTooltip>
 
               <div
-                className="text-muted-foreground shrink-0 [&_svg]:size-4"
+                className="shrink-0 text-muted-foreground [&_svg]:size-4"
                 aria-hidden
               >
                 <ChevronsDownUpIcon className="hidden group-data-[state=open]/project:block" />
@@ -105,8 +103,8 @@ export function ProjectItem({
           </div>
         </div>
 
-        <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden duration-300">
-          <div className="border-edge space-y-4 border-t border-dashed p-4">
+        <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+          <div className="space-y-4 border-edge border-t border-dashed p-4">
             {project.videoSrc && project.thumbnailSrc ? (
               <div className="relative">
                 <HeroVideoDialog
@@ -139,8 +137,8 @@ export function ProjectItem({
 
             {project.skills.length > 0 && (
               <ul className="flex flex-wrap gap-1.5">
-                {project.skills.map((skill, index) => (
-                  <li key={index} className="flex">
+                {project.skills.map((skill) => (
+                  <li key={skill} className="flex">
                     <Tag>{skill}</Tag>
                   </li>
                 ))}

@@ -40,7 +40,7 @@ export function FlipSentences({
           startAnimation(); // Restart the interval when the tab becomes visible
         }
       },
-      { signal }
+      { signal },
     );
 
     return () => {
@@ -49,16 +49,16 @@ export function FlipSentences({
       }
       abortController.abort();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sentences]);
+    // biome-ignore lint/correctness/useExhaustiveDependencies: none
+  }, [sentences, startAnimation]);
 
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.p
         key={`current-sentence-${currentSentence}`}
         className={cn(
-          "font-mono text-sm text-balance text-muted-foreground select-none",
-          className
+          "select-none text-balance font-mono text-muted-foreground text-sm",
+          className,
         )}
         initial={{
           y: 8,

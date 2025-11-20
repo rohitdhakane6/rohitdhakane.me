@@ -4,7 +4,6 @@ import {
   InfinityIcon,
   LinkIcon,
 } from "lucide-react";
-import React from "react";
 
 import { Markdown } from "@/components/markdown";
 import {
@@ -14,8 +13,8 @@ import {
 } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
 import { Tag } from "@/components/ui/tag";
-import { Prose } from "@/components/ui/typography";
 import { SimpleTooltip } from "@/components/ui/tooltip";
+import { Prose } from "@/components/ui/typography";
 
 import type { ExperiencePosition } from "../../types/experiences";
 import { ExperienceIcon } from "./experience-position-icon";
@@ -30,23 +29,23 @@ export function ExperiencePositionItem({
 
   return (
     <Collapsible defaultOpen={position.isExpanded} asChild>
-      <div className="last:before:bg-background relative last:before:absolute last:before:h-full last:before:w-4">
-        <CollapsibleTrigger className="group/experience block w-full text-left select-none">
-          <div className="bg-background relative z-1 mb-1 flex items-center gap-3">
+      <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
+        <CollapsibleTrigger className="group/experience block w-full select-none text-left">
+          <div className="relative z-1 mb-1 flex items-center gap-3 bg-background">
             <div
-              className="bg-muted text-muted-foreground flex size-6 shrink-0 items-center justify-center rounded-lg dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
+              className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground dark:inset-shadow-[1px_1px_1px,0px_0px_1px] dark:inset-shadow-white/15"
               aria-hidden
             >
               <ExperienceIcon className="size-4" icon={position.icon} />
             </div>
 
-            <h4 className="flex-1 font-medium text-balance">
+            <h4 className="flex-1 text-balance font-medium">
               {position.title}
             </h4>
             {position.employmentUrl && (
               <SimpleTooltip content="Open Link">
                 <a
-                  className="text-muted-foreground hover:text-foreground relative flex size-6 shrink-0 items-center justify-center after:absolute after:-inset-2"
+                  className="after:-inset-2 relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute hover:text-foreground"
                   href={position.employmentUrl}
                   target="_blank"
                   rel="noopener"
@@ -59,7 +58,7 @@ export function ExperiencePositionItem({
 
             {position.description && (
               <div
-                className="text-muted-foreground shrink-0 [&_svg]:size-4"
+                className="shrink-0 text-muted-foreground [&_svg]:size-4"
                 aria-hidden
               >
                 <ChevronsDownUpIcon className="hidden group-data-[state=open]/experience:block" />
@@ -68,7 +67,7 @@ export function ExperiencePositionItem({
             )}
           </div>
 
-          <div className="text-muted-foreground flex items-center gap-2 pl-9 text-sm">
+          <div className="flex items-center gap-2 pl-9 text-muted-foreground text-sm">
             {position.employmentType && (
               <>
                 <dl>
@@ -104,7 +103,7 @@ export function ExperiencePositionItem({
           </div>
         </CollapsibleTrigger>
 
-        <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden duration-300">
+        <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
           {position.description && (
             <Prose className="pt-2 pl-9">
               <Markdown>{position.description}</Markdown>
@@ -113,8 +112,8 @@ export function ExperiencePositionItem({
 
           {Array.isArray(position.skills) && position.skills.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
-              {position.skills.map((skill, index) => (
-                <li key={index} className="flex">
+              {position.skills.map((skill) => (
+                <li key={skill} className="flex">
                   <Tag>{skill}</Tag>
                 </li>
               ))}

@@ -13,9 +13,7 @@ class SoundManager {
     }
 
     audio.currentTime = 0;
-    audio.play().catch((err) => {
-      console.warn(`Audio play failed for ${url}:`, err);
-    });
+    audio.play().catch((_err) => {});
   }
 }
 
