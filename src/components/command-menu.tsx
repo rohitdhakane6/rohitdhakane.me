@@ -3,20 +3,25 @@
 import { useCommandState } from "cmdk";
 import type { LucideProps } from "lucide-react";
 import {
+  AwardIcon,
+  BookmarkIcon,
+  BoxIcon,
   BriefcaseBusinessIcon,
   CornerDownLeftIcon,
-  LetterTextIcon,
+  DownloadIcon,
+  LayersIcon,
   MoonStarIcon,
+  QuoteIcon,
   RssIcon,
+  ShieldCheckIcon,
   SunMediumIcon,
   TextIcon,
-  UserCircle,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-
+import { useHotkeys } from "react-hotkeys-hook";
 import {
   CommandDialog,
   CommandEmpty,
@@ -24,13 +29,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command";
-import { useClickSound } from "@/hooks/use-click-sound";
-import { cn } from "@/lib/utils";
-import { SOCIAL_LINKS } from "@/profile/data/social-links";
-import type { Post } from "@/types/blog";
-
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import type { Post } from "@/features/blog/types/post";
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
+import { useSound } from "@/hooks/use-sound";
+import { trackEvent } from "@/lib/events";
 import { ComponentIcon, Icons } from "./icons";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -49,11 +53,11 @@ const MENU_LINKS: CommandLinkItem[] = [
   {
     title: "Portfolio",
     href: "/",
-    icon: UserCircle,
+    icon: Icons.award,
   },
   {
-    title: "Resume",
-    href: "/resume.pdf",
+    title: "Components",
+    href: "/components",
     icon: Icons.react,
   },
   {
@@ -67,12 +71,17 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
   {
     title: "About",
     href: "/#about",
-    icon: LetterTextIcon,
+    icon: Icons.google,
+  },
+  {
+    title: "Testimonials",
+    href: "/#testimonials",
+    icon: QuoteIcon,
   },
   {
     title: "Tech Stack",
     href: "/#stack",
-    icon: Icons.ts,
+    icon: LayersIcon,
   },
   {
     title: "Experience",
@@ -82,13 +91,27 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
   {
     title: "Projects",
     href: "/#projects",
-    icon: Icons.project,
+    icon: BoxIcon,
   },
-
+  {
+    title: "Honors & Awards",
+    href: "/#awards",
+    icon: AwardIcon,
+  },
   {
     title: "Certifications",
     href: "/#certs",
-    icon: Icons.certificate,
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: "Bookmarks",
+    href: "/#bookmarks",
+    icon: BookmarkIcon,
+  },
+  {
+    title: "Download vCard",
+    href: "/vcard",
+    icon: DownloadIcon,
   },
 ];
 
@@ -106,38 +129,37 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
 
   const [open, setOpen] = useState(false);
 
-  const playClick = useClickSound();
+  const playClick = useSound("/audio/ui-sounds/click.wav");
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    const { signal } = abortController;
+  useHotkeys("mod+k, slash", (e) => {
+    e.preventDefault();
 
-    document.addEventListener(
-      "keydown",
-      (e: KeyboardEvent) => {
-        if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
-          if (
-            (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-            e.target instanceof HTMLInputElement ||
-            e.target instanceof HTMLTextAreaElement ||
-            e.target instanceof HTMLSelectElement
-          ) {
-            return;
-          }
-
-          e.preventDefault();
-          setOpen((open) => !open);
-        }
-      },
-      { signal },
-    );
-
-    return () => abortController.abort();
-  }, []);
+    setOpen((open) => {
+      if (!open) {
+        trackEvent({
+          name: "open_command_menu",
+          properties: {
+            method: "keyboard",
+            key: e.key === "/" ? "/" : e.metaKey ? "cmd+k" : "ctrl+k",
+          },
+        });
+      }
+      return !open;
+    });
+  });
 
   const handleOpenLink = useCallback(
     (href: string, openInNewTab = false) => {
       setOpen(false);
+
+      trackEvent({
+        name: "command_menu_action",
+        properties: {
+          action: "navigate",
+          href: href,
+          open_in_new_tab: openInNewTab,
+        },
+      });
 
       if (openInNewTab) {
         window.open(href, "_blank", "noopener");
@@ -151,7 +173,16 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
   const createThemeHandler = useCallback(
     (theme: "light" | "dark" | "system") => () => {
       setOpen(false);
-      playClick();
+      playClick(0.5);
+
+      trackEvent({
+        name: "command_menu_action",
+        properties: {
+          action: "change_theme",
+          theme: theme,
+        },
+      });
+
       setTheme(theme);
 
       // if (!document.startViewTransition) {
@@ -181,7 +212,15 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
       <Button
         variant="secondary"
         className="h-8 select-none gap-1.5 rounded-full border border-input bg-white px-2.5 text-muted-foreground shadow-xs hover:bg-white dark:bg-input/30 dark:hover:bg-input/30"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setOpen(true);
+          trackEvent({
+            name: "open_command_menu",
+            properties: {
+              method: "click",
+            },
+          });
+        }}
       >
         <Icons.search aria-hidden />
 
@@ -189,18 +228,21 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
           Search
         </span>
 
-        <CommandMenuKbd className="hidden tracking-wider sm:in-[.os-macos_&]:flex">
-          ⌘K
-        </CommandMenuKbd>
-        <CommandMenuKbd className="hidden sm:not-[.os-macos_&]:flex">
-          Ctrl K
-        </CommandMenuKbd>
+        <KbdGroup className="hidden sm:in-[.os-macos_&]:flex">
+          <Kbd className="w-5 min-w-5">⌘</Kbd>
+          <Kbd className="w-5 min-w-5">K</Kbd>
+        </KbdGroup>
+
+        <KbdGroup className="hidden sm:not-[.os-macos_&]:flex">
+          <Kbd>Ctrl</Kbd>
+          <Kbd className="w-5 min-w-5">K</Kbd>
+        </KbdGroup>
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandMenuInput />
 
-        <CommandList className="supports-timeline-scroll:scroll-fade-y min-h-80">
+        <CommandList className="supports-timeline-scroll:scroll-fade-effect-y min-h-80">
           <CommandEmpty>No results found.</CommandEmpty>
 
           <CommandLinkGroup
@@ -209,15 +251,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             onLinkSelect={handleOpenLink}
           />
 
-          <CommandSeparator />
-
           <CommandLinkGroup
             heading="Portfolio"
             links={PORTFOLIO_LINKS}
             onLinkSelect={handleOpenLink}
           />
-
-          <CommandSeparator />
 
           <CommandLinkGroup
             heading="Components"
@@ -226,8 +264,6 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             onLinkSelect={handleOpenLink}
           />
 
-          <CommandSeparator />
-
           <CommandLinkGroup
             heading="Blog"
             links={blogLinks}
@@ -235,15 +271,11 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
             onLinkSelect={handleOpenLink}
           />
 
-          <CommandSeparator />
-
           <CommandLinkGroup
             heading="Social Links"
             links={SOCIAL_LINK_ITEMS}
             onLinkSelect={handleOpenLink}
           />
-
-          <CommandSeparator />
 
           <CommandGroup heading="Theme">
             <CommandItem
@@ -276,6 +308,34 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
   );
 }
 
+function CommandMenuInput() {
+  const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    if (searchValue.length >= 2) {
+      const timeoutId = setTimeout(() => {
+        trackEvent({
+          name: "command_menu_search",
+          properties: {
+            query: searchValue,
+            query_length: searchValue.length,
+          },
+        });
+      }, 500);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [searchValue]);
+
+  return (
+    <CommandInput
+      placeholder="Type a command or search..."
+      value={searchValue}
+      onValueChange={setSearchValue}
+    />
+  );
+}
+
 function CommandLinkGroup({
   heading,
   links,
@@ -300,7 +360,7 @@ function CommandLinkGroup({
           >
             {link?.iconImage ? (
               <Image
-                className="rounded-sm"
+                className="corner-squircle rounded-sm supports-corner-shape:rounded-[50%]"
                 src={link.iconImage}
                 alt={link.title}
                 width={16}
@@ -372,33 +432,21 @@ function CommandMenuFooter() {
     <>
       <div className="flex h-10" />
 
-      <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-end gap-2 border-t bg-zinc-100/30 px-4 font-medium text-xs dark:bg-zinc-800/30">
+      <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 border-t bg-zinc-100/30 px-4 font-medium text-xs dark:bg-zinc-800/30">
         <div className="flex shrink-0 items-center gap-2">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind]}</span>
-          <CommandMenuKbd>
+          <Kbd>
             <CornerDownLeftIcon />
-          </CommandMenuKbd>
+          </Kbd>
           <Separator
             orientation="vertical"
             className="data-[orientation=vertical]:h-4"
           />
           <span className="text-muted-foreground">Exit</span>
-          <CommandMenuKbd>Esc</CommandMenuKbd>
+          <Kbd>Esc</Kbd>
         </div>
       </div>
     </>
-  );
-}
-
-function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
-  return (
-    <kbd
-      className={cn(
-        "pointer-events-none flex h-5 min-w-6 select-none items-center justify-center gap-1 rounded-sm bg-black/5 px-1 font-normal font-sans text-[13px] text-muted-foreground shadow-[inset_0_-1px_2px] shadow-black/10 dark:bg-white/10 dark:text-shadow-xs dark:shadow-white/10 [&_svg:not([class*='size-'])]:size-3",
-        className,
-      )}
-      {...props}
-    />
   );
 }
 

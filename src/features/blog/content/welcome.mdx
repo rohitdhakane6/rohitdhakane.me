@@ -1,0 +1,85 @@
+---
+title: Welcome to rohitdhakane.me
+description: A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
+image: https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/blog/welcome.png
+createdAt: 2025-08-08
+updatedAt: 2025-08-08
+---
+
+## Hello and welcome!
+
+This is the very first post on my blog, built with **Next.js**, **MDX**, and a custom rendering system that makes reading and learning a joy.
+
+## What Makes This Blog Special? 🤔
+
+Thanks to my setup, you’ll see:
+
+- Headings with beautiful typography
+- **Tables** for comparing features
+- Rich **syntax-highlighted** code blocks
+- A **copy button** for quick code copying
+- Multi-package manager command rendering
+- Automatic **external link handling**
+- Language **icons in figcaptions**
+- And custom React components embedded directly in posts
+
+### Example: JavaScript Function
+
+```js
+function greet(name) {
+  return `Hello, ${name}! 👋`;
+}
+
+console.log(greet("Developer"));
+```
+
+_Figcaption: JavaScript code example for greeting a user_
+
+## Installing Dependencies in Any Package Manager
+
+```bash
+npm install next react react-dom
+```
+
+Thanks to the `CodeBlockCommand` component, these commands are neatly organized and easy to switch between.
+
+## Table of Features
+
+| Feature                    | Available | Description                                               |
+| -------------------------- | --------- | --------------------------------------------------------- |
+| Headings                   | ✅        | `h1` through `h6` all styled via custom `<Heading>`       |
+| Syntax Highlighting        | ✅        | Powered by `rehype-pretty-code`                           |
+| Copy Button                | ✅        | Added to all `pre` code blocks                            |
+| Multi-Package Command UI   | ✅        | Rendered with `CodeBlockCommand` component                |
+| Tables                     | ✅        | Styled via custom `<Table>` set                           |
+| External Links             | ✅        | Open in new tabs with proper `rel` attributes             |
+| Language Icons in Captions | ✅        | Automatically rendered if code block language is detected |
+| Inline Code Styling        | ✅        | Uses `<Code>` typography component for inline snippets    |
+
+## Inline Code Examples
+
+When you see something like `const port = 3000;`,
+that’s an **inline code** example using the `<Code>` typography component.
+
+### Code with Figcaption & Language Icon
+
+```ts
+type User = {
+  id: string;
+  name: string;
+};
+
+function getUser(id: string): User {
+  return { id, name: "Rohit" };
+}
+```
+
+_Figcaption: TypeScript function example with language icon_
+
+## Final Thoughts 💭
+
+This setup isn’t just about looks — it’s about **better communication**.
+By combining **good design** with **developer-friendly features**,
+I can share articles that are easy to read, easy to use, and fun to explore.
+
+Thanks for joining me on this journey — and get ready for some exciting posts ahead!

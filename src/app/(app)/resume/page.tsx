@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { USER } from "@/data/user";
+import { USER } from "@/features/portfolio/data/user";
 
 export const metadata: Metadata = {
   title: "Resume",

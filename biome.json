@@ -59,7 +59,8 @@
 
       "suspicious": {
         "noUnknownAtRules": "off",
-        "noConsole": "warn"
+        "noConsole": "warn",
+        "noArrayIndexKey": "off"
       },
       "correctness": {
         "noUnusedImports": "error",

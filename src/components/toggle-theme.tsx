@@ -1,25 +1,46 @@
 "use client";
 
-import { MoonStarIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useCallback } from "react";
-import { Button } from "@/components/ui/button";
-import { useClickSound } from "@/hooks/use-click-sound";
 
-export function ToggleTheme() {
+import { META_THEME_COLORS } from "@/config/site";
+import { useMetaColor } from "@/hooks/use-meta-color";
+import { useSound } from "@/hooks/use-sound";
+
+import { MoonIcon } from "./animated-icons/moon";
+import { SunMediumIcon } from "./animated-icons/sun-medium";
+import { Button } from "./ui/button";
+
+export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const playClick = useClickSound();
 
-  const handleToggle = useCallback(() => {
-    playClick();
+  const { setMetaColor } = useMetaColor();
+
+  const playClick = useSound("/audio/ui-sounds/click.wav");
+
+  const switchTheme = useCallback(() => {
+    playClick(0.5);
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  }, [resolvedTheme, setTheme, playClick]);
+    setMetaColor(
+      resolvedTheme === "dark"
+        ? META_THEME_COLORS.light
+        : META_THEME_COLORS.dark,
+    );
+  }, [resolvedTheme, setTheme, setMetaColor, playClick]);
 
   return (
-    <Button variant="outline" size="icon" onClick={handleToggle}>
-      <MoonStarIcon className="hidden dark:block" />
-      <SunIcon className="block dark:hidden" />
-      <span className="sr-only">Toggle Theme</span>
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={switchTheme}
+      // onClick={() => {
+      //   if (!document.startViewTransition) switchTheme();
+      //   document.startViewTransition(switchTheme);
+      // }}
+    >
+      <MoonIcon className="after:-inset-2 relative hidden after:absolute [html.dark_&]:block" />
+      <SunMediumIcon className="after:-inset-2 relative hidden after:absolute [html.light_&]:block" />
+      <span className="sr-only">Theme Toggle</span>
     </Button>
   );
 }

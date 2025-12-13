@@ -5,9 +5,9 @@ import { DesktopNav } from "@/components/desktop-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { SiteHeaderWrapper } from "@/components/site-header-wrapper";
 // import { NavItemGitHub } from "@/components/nav-item-github";
-import { ToggleTheme } from "@/components/toggle-theme";
+import { ThemeToggle } from "@/components/toggle-theme";
 import { MAIN_NAV } from "@/config/site";
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/features/blog/data/posts";
 import { cn } from "@/lib/utils";
 
 // const BrandContextMenu = dynamic(() =>
@@ -47,7 +47,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <CommandMenu posts={posts} />
           {/* <NavItemGitHub /> */}
-          <ToggleTheme />
+          <ThemeToggle />
           <MobileNav className="sm:hidden" items={MAIN_NAV} />
         </div>
       </div>

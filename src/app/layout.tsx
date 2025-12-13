@@ -2,11 +2,12 @@ import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { WebSite, WithContext } from "schema-dts";
 
 import { Providers } from "@/components/providers";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
-import { USER } from "@/data/user";
+import { USER } from "@/features/portfolio/data/user";
 import { fontMono, fontSans } from "@/lib/font";
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
@@ -141,7 +142,9 @@ export default function RootLayout({
       </head>
 
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </Providers>
       </body>
     </html>
   );
