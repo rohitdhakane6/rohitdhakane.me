@@ -97,14 +97,14 @@ A **web-based wallet** for managing Solana tokens, allowing users to send, recei
     isExpanded: false,
   },
   {
-    id: "futerblink",
-    title: "Futerblink",
+    id: "futureblink",
+    title: "Future blink",
     period: {
       start: "07.2024",
     },
     link: "https://github.com/rohitdhakane6/futureblink-mern-task",
     skills: ["Next.js", "TailwindCSS", "Node.js", "WebSocket"],
-    description: `Futerblink is a cold email automation platform that helps users send, track, and manage personalized outreach campaigns.  
+    description: `Future blink is a cold email automation platform that helps users send, track, and manage personalized outreach campaigns.  
 It focuses on deliverability, scheduling, and analytics to improve response rates.  
 
 - 📧 Create and manage cold email campaigns  
