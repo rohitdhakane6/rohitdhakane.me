@@ -22,14 +22,9 @@ export const USER = {
   jobTitle: "Full Stack Developer",
   jobs: [
     {
-      title: "Senior Frontend Developer & UI Design Lead",
-      company: "Simplamo",
-      website: "https://simplamo.com?ref=IN-926722",
-    },
-    {
-      title: "Founder",
-      company: "Quaric",
-      website: "https://quaric.com",
+      title: "Building ExpenseAI",
+      company: "ExpenseAI",
+      website: "https://expenseai.tech",
     },
   ],
   //   about: `Hello, World! I am Rohit Dhakane — a Full Stack Engineer passionate about building high-performance, user-focused software solutions that merge clean design with robust engineering.
