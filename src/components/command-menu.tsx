@@ -3,15 +3,12 @@
 import { useCommandState } from "cmdk";
 import type { LucideProps } from "lucide-react";
 import {
-  AwardIcon,
-  BookmarkIcon,
   BoxIcon,
   BriefcaseBusinessIcon,
   CornerDownLeftIcon,
-  DownloadIcon,
+  FileText,
   LayersIcon,
   MoonStarIcon,
-  QuoteIcon,
   RssIcon,
   ShieldCheckIcon,
   SunMediumIcon,
@@ -56,9 +53,9 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: Icons.award,
   },
   {
-    title: "Components",
-    href: "/components",
-    icon: Icons.react,
+    title: "Resume",
+    href: "/resume",
+    icon: FileText,
   },
   {
     title: "Blog",
@@ -73,11 +70,11 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#about",
     icon: Icons.google,
   },
-  {
-    title: "Testimonials",
-    href: "/#testimonials",
-    icon: QuoteIcon,
-  },
+  // {
+  //   title: "Testimonials",
+  //   href: "/#testimonials",
+  //   icon: QuoteIcon,
+  // },
   {
     title: "Tech Stack",
     href: "/#stack",
@@ -93,26 +90,26 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#projects",
     icon: BoxIcon,
   },
-  {
-    title: "Honors & Awards",
-    href: "/#awards",
-    icon: AwardIcon,
-  },
+  // {
+  //   title: "Honors & Awards",
+  //   href: "/#awards",
+  //   icon: AwardIcon,
+  // },
   {
     title: "Certifications",
     href: "/#certs",
     icon: ShieldCheckIcon,
   },
-  {
-    title: "Bookmarks",
-    href: "/#bookmarks",
-    icon: BookmarkIcon,
-  },
-  {
-    title: "Download vCard",
-    href: "/vcard",
-    icon: DownloadIcon,
-  },
+  // {
+  //   title: "Bookmarks",
+  //   href: "/#bookmarks",
+  //   icon: BookmarkIcon,
+  // },
+  // {
+  //   title: "Download vCard",
+  //   href: "/vcard",
+  //   icon: DownloadIcon,
+  // },
 ];
 
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
