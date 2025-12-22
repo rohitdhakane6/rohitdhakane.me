@@ -6,7 +6,7 @@ export const USER = {
   displayName: "Rohit Dhakane",
   username: "rohitdhakane6",
   resumeUrl:
-    "https://drive.google.com/file/d/1i4kg8fB9u7OZiU3lmprsqYSzs-f1umzn/preview",
+    "https://drive.google.com/file/d/1o79ihJOXSlAwn5LC35pycNGxhVUOe-zB/preview",
   gender: "male",
   pronouns: "he/him",
   bio: "Creating with code. Small details matter.",
