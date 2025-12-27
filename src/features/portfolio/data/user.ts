@@ -54,9 +54,8 @@ One of my current focuses is **[ExpenseAI](https://expenseai.tech)** — a produ
 I believe in **open-source collaboration**, **continuous learning**, and building solutions that genuinely matter.  
 Let’s connect and build something meaningful 🚀
 `,
-  avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-light.png?t=1764345394",
+  avatar: "https://assets.rohitdhakane.in/images/me.png",
+  ogImage: "https://assets.rohitdhakane.in/images/og-image.png?t=1764345394",
   namePronunciationUrl: "/audio/rohitdhakane.mp3",
   timeZone: "IST",
   keywords: ["Rohit", "Dhakane", "Rohit Dhakane"],
