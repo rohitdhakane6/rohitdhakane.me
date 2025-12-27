@@ -6,7 +6,6 @@ export const CERTIFICATIONS: Certification[] = [
     issuer: "100x Dev's",
     issueDate: "2025-08-15",
     credentialID: "T7U00BJ9",
-    credentialURL:
-      "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/certificate/100x.png",
+    credentialURL: "https://assets.rohitdhakane.in/certificate/100x.png",
   },
 ];

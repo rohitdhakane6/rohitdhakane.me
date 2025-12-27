@@ -3,34 +3,34 @@
   "short_name": "Portfolio",
   "icons": [
     {
-      "src": "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/android-chrome-192x192.png",
+      "src": "https://assets.rohitdhakane.in/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/android-chrome-512x512.png",
+      "src": "https://assets.rohitdhakane.in/favicon/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/apple-touch-icon.png",
+      "src": "https://assets.rohitdhakane.in/favicon/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/favicon-32x32.png",
+      "src": "https://assets.rohitdhakane.in/favicon/favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/favicon-16x16.png",
+      "src": "https://assets.rohitdhakane.in/favicon/favicon-16x16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/favicon.ico",
+      "src": "https://assets.rohitdhakane.in/favicon/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
     }

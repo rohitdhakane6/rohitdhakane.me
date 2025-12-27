@@ -88,22 +88,22 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/favicon-32x32.png",
+        url: "https://assets.rohitdhakane.in/favicon/favicon-32x32.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/favicon-16x16.png",
+        url: "https://assets.rohitdhakane.in/favicon/favicon-16x16.png",
         sizes: "16x16",
         type: "image/png",
       },
       {
-        url: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/favicon.ico",
+        url: "https://assets.rohitdhakane.in/favicon/favicon.ico",
         sizes: "any",
       },
     ],
     apple: {
-      url: "https://pub-b95b26cb348242c59499397cac963ab5.r2.dev/favicon/apple-touch-icon.png",
+      url: "https://assets.rohitdhakane.in/favicon/apple-touch-icon.png",
       type: "image/png",
       sizes: "180x180",
     },
