@@ -2,7 +2,7 @@ import type { TechStack } from "../types/tech-stack";
 
 export const TECH_STACK: TechStack[] = [
   {
-    key: "typescript",
+    key: "ts",
     title: "TypeScript",
     href: "https://www.typescriptlang.org/",
     categories: ["Language"],
@@ -17,12 +17,6 @@ export const TECH_STACK: TechStack[] = [
     key: "python",
     title: "Python",
     href: "https://www.python.org/",
-    categories: ["Language"],
-  },
-  {
-    key: "php",
-    title: "PHP",
-    href: "https://www.php.net/",
     categories: ["Language"],
   },
   {
@@ -70,31 +64,12 @@ export const TECH_STACK: TechStack[] = [
     theme: true,
   },
   {
-    key: "radixui",
-    title: "Radix UI",
-    href: "https://www.radix-ui.com/",
-    categories: ["Library", "Component Library"],
-    theme: true,
-  },
-  {
     key: "motion",
     title: "Motion",
     href: "https://motion.dev/",
     categories: ["Library", "Animation"],
   },
-  {
-    key: "tanstack",
-    title: "TanStack",
-    href: "https://tanstack.com/",
-    categories: ["Library"],
-    theme: true,
-  },
-  {
-    key: "mobx-state-tree",
-    title: "MobX-State-Tree",
-    href: "https://mobx-state-tree.js.org/",
-    categories: ["State Management"],
-  },
+
   {
     key: "redux",
     title: "Redux",
@@ -102,35 +77,11 @@ export const TECH_STACK: TechStack[] = [
     categories: ["State Management"],
   },
   {
-    key: "antd",
-    title: "Ant Design",
-    href: "https://ant.design/",
-    categories: ["Library", "UI Library"],
-  },
-  {
     key: "react-router",
     title: "React Router",
     href: "https://reactrouter.com/",
     categories: ["Library", "Navigation"],
     theme: true,
-  },
-  {
-    key: "react-navigation",
-    title: "React Navigation",
-    href: "https://reactnavigation.org/",
-    categories: ["Library", "Navigation"],
-  },
-  {
-    key: "loopback",
-    title: "LoopBack",
-    href: "https://loopback.io/",
-    categories: ["Framework"],
-  },
-  {
-    key: "laravel",
-    title: "Laravel",
-    href: "https://laravel.com/",
-    categories: ["Framework"],
   },
   {
     key: "git",
@@ -145,9 +96,35 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Containerization"],
   },
   {
-    key: "mysql",
-    title: "MySQL",
-    href: "https://www.mysql.com/",
+    key: "k8s",
+    title: "Kubernetes",
+    href: "https://kubernetes.io/",
+    categories: ["Container Orchestration"],
+  },
+  {
+    key: "aws",
+    title: "AWS",
+    href: "https://aws.amazon.com/",
+    categories: ["Cloud Provider"],
+    theme: true,
+  },
+  {
+    key: "vercel",
+    title: "Vercel",
+    href: "https://vercel.com/",
+    categories: ["Hosting", "Cloud Provider"],
+    theme: true,
+  },
+  {
+    key: "nginx",
+    title: "Nginx",
+    href: "https://www.nginx.com/",
+    categories: ["Web Server"],
+  },
+  {
+    key: "postgresql",
+    title: "PostgreSQL",
+    href: "https://www.postgresql.org/",
     categories: ["Database"],
   },
   {
@@ -161,18 +138,6 @@ export const TECH_STACK: TechStack[] = [
     title: "Redis",
     href: "https://redis.io/",
     categories: ["Database"],
-  },
-  {
-    key: "figma",
-    title: "Figma",
-    href: "https://www.figma.com/",
-    categories: ["Tools", "Design"],
-  },
-  {
-    key: "ps",
-    title: "Adobe Photoshop",
-    href: "https://www.adobe.com/vn_en/products/photoshop.html",
-    categories: ["Tools", "Design"],
   },
   {
     key: "chatgpt",
